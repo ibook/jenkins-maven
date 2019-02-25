@@ -19,9 +19,10 @@ pipeline {
                 echo "构建中..."
 	            dir(path: 'project2') {
     	            sh 'mvn package' // mvn 示例
+	                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true // 收集构建产物
                 }
                 echo "构建完成."
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true // 收集构建产物
+                
             }
         }
 
