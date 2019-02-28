@@ -1,4 +1,4 @@
-package demo.project2;
+package demo;
 
 /**
  * Hello world!
