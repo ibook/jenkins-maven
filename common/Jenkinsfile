@@ -40,7 +40,9 @@ pipeline {
             steps {
                 echo "部署中..."
                 // 请在这里放置收集单元测试报告的调用过程，例如:
-                // sh 'mvn tomcat7:deploy' // Maven tomcat7 插件示例：
+                dir(path: 'common') {
+                	sh 'mvn install'
+                }
                 // sh './deploy.sh' // 自研部署脚本
                 echo "部署完成"
             }
