@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "构建中..."
 	            dir(path: 'project1') {
-    	            sh 'mvn package' // mvn 示例
+    	            sh 'mvn package -Dmaven.test.skip=true' // mvn 示例
    		            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true // 收集构建产物
                 }
                 echo "构建完成."
@@ -30,8 +30,7 @@ pipeline {
             steps {
                 echo "单元测试中..."
                 // 请在这里放置您项目代码的单元测试调用过程，例如:
-                // sh 'mvn test' // mvn 示例
-                // sh 'make test' // make 示例
+                sh 'mvn test' // mvn 示例
                 echo "单元测试完成."
                 // junit 'target/surefire-reports/*.xml' // 收集单元测试报告的调用过程
             }
