@@ -13,7 +13,16 @@ pipeline {
                 )
             }
         }
-
+		stage("共享库") {
+            steps {
+                echo "构建中..."
+                dir(path: 'common') {
+              		sh 'mvn install -Dmaven.test.skip=true' // mvn 示例
+              		archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true // 收集构建产物
+              	}
+                echo "构建完成."
+            }
+        }
         stage("构建") {
             steps {
                 echo "构建中..."
